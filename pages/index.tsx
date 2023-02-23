@@ -1,3 +1,4 @@
+import { Htag } from "@/components";
 import { Inter } from "@next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -5,9 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home(): JSX.Element {
   return (
     <>
-      <h1>hello world!</h1>
+      <Htag tag="h1">hello!</Htag>
     </>
   );
 }
-
-// переопределние свойств через key={} (см. link)
