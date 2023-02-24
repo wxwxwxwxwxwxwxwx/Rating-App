@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 
+type tagType = "h1" | "h2" | "h3";
+
 export interface IHtagProps {
-  tag: "h1" | "h2" | "h3";
+  tag: tagType;
   children: ReactNode;
 }
