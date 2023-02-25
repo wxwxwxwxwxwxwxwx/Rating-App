@@ -1,4 +1,4 @@
-import { Htag, Button, Paragraph, Tag } from "@/components";
+import { Htag, Button, Paragraph, Tag, Rating } from "@/components";
 import { Inter } from "@next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,6 +30,7 @@ export default function Home(): JSX.Element {
       <Tag size="medium" color="gray">
         Primary
       </Tag>
+      <Rating rating={4} />
     </>
   );
 }
