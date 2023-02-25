@@ -1,9 +1,13 @@
+import { useState } from "react";
+
 import { Htag, Button, Paragraph, Tag, Rating } from "@/components";
 import { Inter } from "@next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(): JSX.Element {
+  const [rating, setRating] = useState<number>(4);
+
   return (
     <>
       <Htag tag="h1">hello!</Htag>
@@ -30,7 +34,7 @@ export default function Home(): JSX.Element {
       <Tag size="medium" color="gray">
         Primary
       </Tag>
-      <Rating rating={4} />
+      <Rating rating={rating} isEditable={true} setRating={setRating} />
     </>
   );
 }
