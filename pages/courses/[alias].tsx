@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 const firstCategory = 0;
 
 function Course({ menu, page, products }: ICourseProps): JSX.Element {
-  return <>{products.length}</>;
+  return <>{products && products.length}</>;
 }
 
 export default withLayout(Course);
