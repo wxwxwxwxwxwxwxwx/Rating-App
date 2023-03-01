@@ -5,42 +5,25 @@ import { useContext } from "react";
 import { AppContext } from "@/context/app.context";
 import { Manuale } from "@next/font/google";
 import { FirstLevelMenuItem, IPageItem } from "@/interfaces/menu.interface";
-import CoursesIcon from "./icons/courses.svg";
-import ServicesIcon from "./icons/services.svg";
-import BooksIcon from "./icons/books.svg";
-import ProductsIcon from "./icons/products.svg";
-import { TopLevelCategory } from "@/interfaces/page.interface";
 import Link from "next/link";
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-  {
-    route: "courses",
-    name: "Курсы",
-    icon: <CoursesIcon />,
-    id: TopLevelCategory.Courses,
-  },
-  {
-    route: "services",
-    name: "Сервисы",
-    icon: <ServicesIcon />,
-    id: TopLevelCategory.Services,
-  },
-  {
-    route: "books",
-    name: "Книги",
-    icon: <BooksIcon />,
-    id: TopLevelCategory.Books,
-  },
-  {
-    route: "products",
-    name: "Товары",
-    icon: <ProductsIcon />,
-    id: TopLevelCategory.Products,
-  },
-];
+import { useRouter } from "next/router";
+import { firstLevelMenu } from "@/helpers/helpers";
 
 export const Menu = () => {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
+  const router = useRouter();
+
+  const openSecondLevel = (secondCategory: string) => {
+    setMenu &&
+      setMenu(
+        menu.map((m) => {
+          if (m._id.secondCategory == secondCategory) {
+            m.isOpened = !m.isOpened;
+          }
+          return m;
+        })
+      );
+  };
 
   const buildFirstLevel = () => {
     return (
@@ -67,18 +50,30 @@ export const Menu = () => {
   const buildSecondLevel = (menuItemSecond: FirstLevelMenuItem) => {
     return (
       <div className={styles.secondBlock}>
-        {menu.map((item) => (
-          <div key={item._id.secondCategory}>
-            <div className={styles.secondLevel}>{item._id.secondCategory}</div>
-            <div
-              className={classNames(styles.secondLevelBlock, {
-                [styles.secondLevelBlockOpened]: item.isOpened,
-              })}
-            >
-              {buildThirdLevel(item.pages, menuItemSecond.route)}
+        {menu.map((item) => {
+          if (
+            item.pages.map((p) => p.alias).includes(router.asPath.split("/")[2])
+          ) {
+            item.isOpened = true;
+          }
+          return (
+            <div key={item._id.secondCategory}>
+              <div
+                className={styles.secondLevel}
+                onClick={() => openSecondLevel(item._id.secondCategory)}
+              >
+                {item._id.secondCategory}
+              </div>
+              <div
+                className={classNames(styles.secondLevelBlock, {
+                  [styles.secondLevelBlockOpened]: item.isOpened,
+                })}
+              >
+                {buildThirdLevel(item.pages, menuItemSecond.route)}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     );
   };
@@ -87,7 +82,7 @@ export const Menu = () => {
     return pages.map((item) => (
       <Link
         className={classNames(styles.thirdLevel, {
-          [styles.thirdLevelActive]: false,
+          [styles.thirdLevelActive]: `/${route}/${item.alias}` == router.asPath,
         })}
         href={`/${route}/${item.alias}`}
       >
