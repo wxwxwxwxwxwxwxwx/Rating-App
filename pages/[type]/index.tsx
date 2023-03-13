@@ -33,6 +33,7 @@ export const getStaticProps: GetStaticProps<ITypeProps> = async ({
       notFound: true,
     };
   }
+
   const firstCategoryItem = firstLevelMenu.find((m) => m.route == params.type);
   if (!firstCategoryItem) {
     return {

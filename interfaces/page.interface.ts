@@ -27,7 +27,7 @@ export interface ITopPageModel {
   alias: string;
   title: string;
   category: string;
-  seoText?: string;
+  seoText: string;
   tagsTitle: string;
   metaTitle: string;
   metaDescription: string;
