@@ -1,6 +1,14 @@
 import { useState } from "react";
 
-import { Htag, Button, Paragraph, Tag, Rating } from "@/components";
+import {
+  Htag,
+  Button,
+  Paragraph,
+  Tag,
+  Rating,
+  Input,
+  Textarea,
+} from "@/components";
 import { Inter } from "@next/font/google";
 import { withLayout } from "@/layout/Layout";
 import { GetStaticProps } from "next";
@@ -39,7 +47,8 @@ function Home({ menu }: IHomeProps): JSX.Element {
         Primary
       </Tag>
       <Rating rating={rating} isEditable={true} setRating={setRating} />
-      <ul></ul>
+      <Input placeholder="Имя" />
+      <Textarea placeholder="Сообщение" />
     </>
   );
 }
