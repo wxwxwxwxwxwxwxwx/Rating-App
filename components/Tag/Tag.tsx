@@ -9,7 +9,7 @@ export const Tag = ({
   href,
   className,
   ...props
-}: ITagProps) => {
+}: ITagProps): JSX.Element => {
   return (
     <div
       className={classNames(styles.tag, className, {

@@ -4,7 +4,12 @@ import styles from "./Sort.module.css";
 
 import SortIcon from "./sort.svg";
 
-export const Sort = ({ sort, setSort, className, ...props }: ISortProps) => {
+export const Sort = ({
+  sort,
+  setSort,
+  className,
+  ...props
+}: ISortProps): JSX.Element => {
   return (
     <div className={classNames(styles.sort, className)} {...props}>
       <span

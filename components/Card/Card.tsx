@@ -7,7 +7,7 @@ export const Card = ({
   children,
   className,
   ...props
-}: ICardProps) => {
+}: ICardProps): JSX.Element => {
   return (
     <div
       className={classNames(styles.card, className, {

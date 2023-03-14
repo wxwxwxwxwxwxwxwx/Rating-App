@@ -7,7 +7,7 @@ export const Paragraph = ({
   children,
   className,
   ...props
-}: IParagraphProps) => {
+}: IParagraphProps): JSX.Element => {
   return (
     <p
       className={classNames(styles.p, className, {

@@ -11,7 +11,7 @@ export const Rating = ({
   rating,
   setRating,
   ...props
-}: IRatingProps) => {
+}: IRatingProps): JSX.Element => {
   const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
     new Array(5).fill(<></>)
   );

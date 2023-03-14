@@ -4,7 +4,7 @@ import { ITopPageComponentProps } from "./TopPageComponent.props";
 
 import styles from "./TopPageComponent.module.css";
 import { Card } from "@/components/Card/Card";
-import { Advantages, HhData, Paragraph, Sort } from "@/components";
+import { Advantages, HhData, Paragraph, Product, Sort } from "@/components";
 import { TopLevelCategory } from "@/interfaces/page.interface";
 
 import parse from "html-react-parser";
@@ -42,7 +42,11 @@ export const TopPageComponent = ({
       </div>
       <div>
         {sortedProducts &&
-          sortedProducts.map((item) => <div key={item._id}>{item.title}</div>)}
+          sortedProducts.map((item) => (
+            <Product key={item._id} product={item}>
+              {item.title}
+            </Product>
+          ))}
       </div>
       <div className={styles.hhTitle}>
         <Htag tag="h2">Вакансии - {page.category} </Htag>

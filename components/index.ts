@@ -9,3 +9,5 @@ export * from "./Advantages/Advantages";
 export * from "./Sort/Sort";
 export * from "./Input/Input";
 export * from "./Textarea/Textarea";
+export * from "./Product/Product";
+export * from "./Search/Search";

@@ -11,7 +11,7 @@ export const HhData = ({
   juniorSalary,
   middleSalary,
   seniorSalary,
-}: IHhDataProps) => {
+}: IHhDataProps): JSX.Element => {
   return (
     <div className={styles.hh}>
       <Card className={styles.count}>
